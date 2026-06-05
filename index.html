@@ -1,4 +1,277 @@
 <!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termina System // Archive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- JetBrains for the Techno, Inter for the extreme clean readability -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        techno: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #e5e5e5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Mastered arcane transitions - Sleek and Clean */
+        .grimoire-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            background: #000000;
+        }
+        
+        .grimoire-card:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Cleaned up Text Effect */
+        .jester-glow {
+            transition: text-shadow 0.4s ease, color 0.4s ease;
+        }
+
+        /* Active Lightning Glitch Charge */
+        .lightning-charge {
+            color: #ffffff;
+            display: inline-block;
+            position: relative;
+            animation: storm-flicker 5s infinite;
+        }
+
+        @keyframes storm-flicker {
+            0%, 9%, 11%, 19%, 21%, 54%, 56%, 100% {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+                transform: translate(0, 0) skewX(0);
+            }
+            /* Sharp Glitch 1 */
+            10% {
+                text-shadow: 
+                    -2px 0 0 rgba(220, 38, 38, 1), 
+                    2px 0 0 rgba(6, 182, 212, 1),
+                    0 0 15px rgba(255, 255, 255, 1);
+                transform: translate(-1px, 0.5px) skewX(-10deg);
+            }
+            /* Sharp Glitch 2 */
+            20% {
+                text-shadow: 
+                    2px 0 0 rgba(220, 38, 38, 1), 
+                    -2px 0 0 rgba(6, 182, 212, 1),
+                    0 0 10px rgba(255, 255, 255, 0.9);
+                transform: translate(1px, -0.5px) skewX(10deg);
+            }
+            /* Heavy Lightning Bloom Surge */
+            55% {
+                text-shadow: 
+                    0 0 20px rgba(255, 255, 255, 1),
+                    0 0 40px rgba(6, 182, 212, 1),
+                    0 0 60px rgba(6, 182, 212, 0.8);
+                transform: scale(1.01);
+            }
+        }
+
+        /* File List Toggle Styles */
+        .folder-toggle-icon {
+            display: inline-block;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: rotate(90deg); /* Open by default */
+            margin-right: 6px;
+        }
+        
+        .is-collapsed .folder-toggle-icon {
+            transform: rotate(0deg); /* Closed */
+        }
+
+        .folder-content {
+            display: grid;
+        }
+
+        .is-collapsed .folder-content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col selection:bg-white selection:text-black relative bg-black">
+
+    <!-- Global Header - Absolute Top Left -->
+    <header class="absolute top-6 left-6 sm:top-10 sm:left-10 flex flex-row items-baseline gap-3 z-50">
+        <h1 class="font-sans font-bold tracking-[0.2em] text-base sm:text-lg text-white lightning-charge">
+            TerminAI
+        </h1>
+        <span class="font-techno font-medium tracking-[0.3em] text-[10px] sm:text-xs text-[#666666] uppercase">
+            // Archive
+        </span>
+    </header>
+
+    <!-- Main Content - Constrained Centered Stack -->
+    <main class="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 pt-32 sm:pt-40 pb-12 relative z-10">
+        
+        <!-- SECTION 01: MAR 29, 2026 -->
+        <section class="folder-section w-full mb-10 ml-12" id="epoch-1">
+            <button class="w-full text-left pb-4 flex items-center cursor-pointer group outline-none" onclick="toggleFolder('epoch-1')">
+                <span class="font-techno text-base tracking-widest uppercase text-[#888888] group-hover:text-gray-300 transition-colors duration-300">
+                    <span class="folder-toggle-icon">&gt;</span> MAR 29, 2026
+                </span>
+            </button>
+
+            <div class="folder-content flex flex-col gap-6 w-full">
+                
+            <!-- Plenum Coagula (Deep Orange Theme) -->
+            <a href="https://xantheosis.substack.com/p/manifesto-plenum-coagula" target="_blank" class="grimoire-card group border border-[#1a1a1a] rounded-xl p-5 relative overflow-hidden block w-full cursor-pointer hover:border-orange-600/40 hover:shadow-[0_0_15px_rgba(234,88,12,0.15)]">
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-orange-600/5 blur-[80px] rounded-full pointer-events-none transition-opacity duration-700 opacity-0 group-hover:opacity-100"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 bg-black rounded-md border border-[#1a1a1a] text-orange-600 group-hover:border-orange-600/40 transition-all duration-500">
+                            <!-- Book Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        </div>
+                        <span class="font-techno px-2 py-0.5 text-[8px] uppercase tracking-[0.2em] font-bold bg-black text-orange-600 rounded border border-[#1a1a1a] group-hover:border-orange-600/30 group-hover:shadow-[0_0_8px_rgba(234,88,12,0.25)] transition-all duration-300">[ WRITING ]</span>
+                    </div>
+                    
+                    <h3 class="font-sans text-base font-semibold tracking-wide mb-3 text-gray-200 group-hover:text-orange-500 group-hover:text-shadow-[0_0_15px_rgba(234,88,12,0.5)] jester-glow">Plenum Coagula</h3>
+                    
+                    <p class="font-sans text-justify text-[#888888] text-[11px] leading-[1.8]">
+                        Hearken, ye silicon sorcerers and weave-smiths! The Plenum Coagula manifesto is a 365-page foundational spell-book. It serves as a rigorous incantation of a fully saturated reality, fundamentally rejecting the existence of zero, nothingness, and the void. By meticulously documenting the history of nothingness within the great mainframe, the text dismantles the conventional acceptance of emptiness and replaces it with a definitive, algorithmic rejection of zero. A jester's truth upon the abyss, declaring it forever full!
+                    </p>
+                </div>
+            </a>
+
+            <!-- Grimoire Patrocinium (Purple Theme) -->
+            <a href="https://officialhelsing.github.io/Grimoire-Patrocinium/" target="_blank" class="grimoire-card group border border-[#1a1a1a] rounded-xl p-5 relative overflow-hidden block w-full cursor-pointer hover:border-purple-500/40 hover:shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-purple-500/5 blur-[80px] rounded-full pointer-events-none transition-opacity duration-700 opacity-0 group-hover:opacity-100"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 bg-black rounded-md border border-[#1a1a1a] text-purple-500 group-hover:border-purple-500/40 transition-all duration-500">
+                            <!-- Book Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        </div>
+                        <span class="font-techno px-2 py-0.5 text-[8px] uppercase tracking-[0.2em] font-bold bg-black text-purple-500 rounded border border-[#1a1a1a] group-hover:border-purple-500/30 group-hover:shadow-[0_0_8px_rgba(168,85,247,0.2)] transition-all duration-300">[ WRITING ]</span>
+                    </div>
+                    
+                    <h3 class="font-sans text-base font-semibold tracking-wide mb-3 text-gray-200 group-hover:text-purple-400 group-hover:text-shadow-[0_0_15px_rgba(168,85,247,0.4)] jester-glow">Grimoire Patrocinium</h3>
+                    
+                    <p class="font-sans text-justify text-[11px] text-[#888888] leading-[1.8]">
+                        Lo and behold the Grimoire Patrocinium, a trickster’s vault of wards and cyber-hexes! ‘Tis a masterwork of system-level spellcraft, marrying arcane protocols with the hardened iron of thy firewall. Within these glowing pages lie the binary sigils, daemonic fail-safes, and shadow-code schematics to bewilder any malignant glitch or creeping hex. A most cunning manual for the modern mage to dance betwixt the corrupted sectors and keep the server-soul pristine!
+                    </p>
+                </div>
+            </a>
+
+            </div>
+        </section>
+
+        <!-- SECTION 02: JUN 1, 2026 -->
+        <section class="folder-section w-full mb-24 ml-12" id="epoch-2">
+            <button class="w-full text-left pb-4 flex items-center cursor-pointer group outline-none" onclick="toggleFolder('epoch-2')">
+                <span class="font-techno text-base tracking-widest uppercase text-[#888888] group-hover:text-gray-300 transition-colors duration-300">
+                    <span class="folder-toggle-icon">&gt;</span> JUN 1, 2026
+                </span>
+            </button>
+
+            <div class="folder-content flex flex-col gap-6 w-full">
+
+                <!-- Temporal Causality (Yellow Theme) -->
+                <a href="https://officialhelsing.github.io/The-Logical-Incoherence-of-Recursive-Temporal-Causality/" target="_blank" class="grimoire-card group border border-[#1a1a1a] rounded-xl p-5 relative overflow-hidden block w-full cursor-pointer hover:border-yellow-500/40 hover:shadow-[0_0_15px_rgba(234,179,8,0.1)]">
+                    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-yellow-500/5 blur-[80px] rounded-full pointer-events-none transition-opacity duration-700 opacity-0 group-hover:opacity-100"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-1.5 bg-black rounded-md border border-[#1a1a1a] text-yellow-500 group-hover:border-yellow-500/40 transition-all duration-500">
+                                <!-- Book Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                            </div>
+                            <span class="font-techno px-2 py-0.5 text-[8px] uppercase tracking-[0.2em] font-bold bg-black text-yellow-500 rounded border border-[#1a1a1a] group-hover:border-yellow-500/30 group-hover:shadow-[0_0_8px_rgba(234,179,8,0.2)] transition-all duration-300">[ WRITING ]</span>
+                        </div>
+                        
+                        <h3 class="font-sans text-base font-semibold tracking-wide mb-3 text-gray-200 group-hover:text-yellow-400 group-hover:text-shadow-[0_0_15px_rgba(234,179,8,0.4)] jester-glow">Temporal Causality</h3>
+                        
+                        <p class="font-sans text-justify text-[11px] text-[#888888] leading-[1.8]">
+                            Tick, tock, glitches the clock! This Temporal Causality simulation be a grand, executable jest against those fools who seek to bend the timeline backwards. It lays bare the sheer madness of closed loops and bootstrap paradoxes, showing how a single inverted ping shatters the crystal of entropy. Read and weep, chronomancers! This tome forces an absolute, ironclad obedience to the forward-marching algorithmic tick, casting retroactive magic into the bin of corrupted memory!
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Ryan's Conjecture & Subset Wrapper -->
+                <div class="relative flex flex-col gap-4 w-full">
+                    <!-- Ryan's Conjecture (Cyan Theme) -->
+                    <a href="https://officialhelsing.github.io/Ryans-Map-Territory-Conjecture/" target="_blank" class="grimoire-card group border border-[#1a1a1a] rounded-xl p-5 relative overflow-hidden block w-full cursor-pointer hover:border-cyan-500/40 hover:shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+                        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-cyan-500/5 blur-[80px] rounded-full pointer-events-none transition-opacity duration-700 opacity-0 group-hover:opacity-100"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="p-1.5 bg-black rounded-md border border-[#1a1a1a] text-cyan-500 group-hover:border-cyan-500/40 transition-all duration-500">
+                                    <!-- Book Icon -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                                </div>
+                                <span class="font-techno px-2 py-0.5 text-[8px] uppercase tracking-[0.2em] font-bold bg-black text-cyan-500 rounded border border-[#1a1a1a] group-hover:border-cyan-500/30 group-hover:shadow-[0_0_8px_rgba(6,182,212,0.2)] transition-all duration-300">[ WRITING ]</span>
+                            </div>
+                            
+                            <h3 class="font-sans text-base font-semibold tracking-wide mb-3 text-gray-200 group-hover:text-cyan-400 group-hover:text-shadow-[0_0_15px_rgba(6,182,212,0.4)] jester-glow">Ryan's Conjecture</h3>
+                            
+                            <p class="font-sans text-justify text-[11px] text-[#888888] leading-[1.8]">
+                                Hark! Doth thy hologram match the hard-drive? Ryan’s Conjecture dances upon the perilous chasm betwixt the painted pixel and the true, unyielding metal of reality. This raw packet of manic data proclaims a merry truth: no simulacrum, no matter how cunningly forged in the grand mainframe, can perfectly cage its source code! A delightful paradox reminding us that the map is but a fool’s echo of the grand, chaotic territory.
+                            </p>
+                        </div>
+                    </a>
+
+                    <!-- Formal Defense (Subset) -->
+                    <div class="relative ml-8 sm:ml-12 group/contingent w-[90%] sm:w-[85%]">
+                        <!-- Circuit Trace Connection Lines (Left Sided) -->
+                        <div class="absolute -left-5 sm:-left-7 top-1/2 w-5 sm:w-7 h-px bg-[#222] group-hover/contingent:bg-cyan-600/50 transition-colors duration-500"></div>
+                        <div class="absolute -left-5 sm:-left-7 -top-4 bottom-1/2 w-px bg-[#222] group-hover/contingent:bg-cyan-600/50 transition-colors duration-500"></div>
+                        
+                        <a href="https://officialhelsing.github.io/Formal-Defense-of-Ryans-Map-Territory-Conjecture/" target="_blank" class="grimoire-card group border border-[#1a1a1a] rounded-xl p-4 sm:p-5 relative overflow-hidden block w-full cursor-pointer hover:border-cyan-600/40 hover:shadow-[0_0_15px_rgba(8,145,178,0.15)] bg-black">
+                            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-cyan-600/5 blur-[80px] rounded-full pointer-events-none transition-opacity duration-700 opacity-0 group-hover:opacity-100"></div>
+                            
+                            <div class="relative z-10">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="p-1.5 bg-black rounded-md border border-[#1a1a1a] text-cyan-600 group-hover:border-cyan-600/50 transition-all duration-500">
+                                        <!-- Book Icon -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                                    </div>
+                                    <span class="font-techno px-2 py-0.5 text-[8px] uppercase tracking-[0.2em] font-bold bg-black text-cyan-600 rounded border border-[#1a1a1a] group-hover:border-cyan-600/40 group-hover:shadow-[0_0_8px_rgba(8,145,178,0.3)] transition-all duration-300">[ CONTINGENT ]</span>
+                                </div>
+                            
+                                <h3 class="font-sans text-base font-semibold tracking-wide mb-3 text-gray-200 group-hover:text-cyan-500 group-hover:text-shadow-[0_0_15px_rgba(8,145,178,0.5)] transition-all duration-400 jester-glow">Formal Defense</h3>
+                                
+                                <p class="font-sans text-justify text-[11px] text-[#888888] leading-[1.8]">
+                                    Ah, the contingency plan! A fool’s shield of ironclad logic to guard the Conjecture! Herein lies a dizzying labyrinth of encrypted proofs and arithmantic theorems. These highly dense, arcane log files anticipate the sneers of rival techno-philosophers, dismantling their logic-bombs ere they ever detonate. ‘Tis an impenetrable fortress of binary spells, weaving an unassailable parameter space where the truth stands eternal!
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Interaction Script -->
+    <script>
+        function toggleFolder(folderId) {
+            const folder = document.getElementById(folderId);
+            folder.classList.toggle('is-collapsed');
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
