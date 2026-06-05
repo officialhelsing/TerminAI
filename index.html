@@ -104,10 +104,26 @@
         .is-collapsed .folder-content {
             display: none;
         }
+
+        /* Cosmic Nebula Environment */
+        .cosmic-nebula {
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(45, 10, 60, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 75%, rgba(10, 45, 60, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(20, 20, 20, 0.1) 0%, transparent 60%);
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 
-<body class="min-h-screen flex flex-col selection:bg-white selection:text-black relative bg-black">
+<body class="min-h-screen flex flex-col selection:bg-white selection:text-black relative bg-black overflow-x-hidden">
+
+    <!-- Subtle Cosmic Nebula Background -->
+    <div class="cosmic-nebula"></div>
 
     <!-- Global Header - Absolute Top Left -->
     <header class="absolute top-6 left-6 sm:top-10 sm:left-10 flex flex-row items-baseline gap-3 z-50">
@@ -120,7 +136,7 @@
     </header>
 
     <!-- Main Content - Constrained Centered Stack -->
-    <main class="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 pt-32 sm:pt-40 pb-12 relative z-10">
+    <main class="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 pt-48 sm:pt-56 pb-12 relative z-10">
         
         <!-- SECTION 01: MAR 29, 2026 -->
         <section class="folder-section w-full mb-10 ml-12" id="epoch-1">
