@@ -59,7 +59,6 @@
                 text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
                 transform: translate(0, 0) skewX(0);
             }
-            /* Sharp Glitch 1 */
             10% {
                 text-shadow: 
                     -2px 0 0 rgba(220, 38, 38, 1), 
@@ -67,7 +66,6 @@
                     0 0 15px rgba(255, 255, 255, 1);
                 transform: translate(-1px, 0.5px) skewX(-10deg);
             }
-            /* Sharp Glitch 2 */
             20% {
                 text-shadow: 
                     2px 0 0 rgba(220, 38, 38, 1), 
@@ -75,7 +73,6 @@
                     0 0 10px rgba(255, 255, 255, 0.9);
                 transform: translate(1px, -0.5px) skewX(10deg);
             }
-            /* Heavy Lightning Bloom Surge */
             55% {
                 text-shadow: 
                     0 0 20px rgba(255, 255, 255, 1),
@@ -98,20 +95,18 @@
             animation-delay: 3.5s;
         }
 
-        /* System Shatter Sequence */
-        .shatter-active #ui-container {
-            animation: system-crash 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        /* Clean Fade Out Sequence */
+        .system-fade-active #ui-container {
+            animation: sleek-fade-out 2.5s ease-in-out forwards;
         }
 
-        @keyframes system-crash {
-            0% { transform: scale(1) skew(0deg); filter: blur(0); opacity: 1; }
-            5% { transform: scale(1.02) translate(5px, -5px) skew(10deg); filter: invert(1); }
-            10% { transform: scale(0.95) translate(-10px, 5px) skew(-10deg); filter: hue-rotate(90deg); }
-            15% { transform: scale(1.05) translate(15px, -10px) skew(5deg); filter: blur(2px) contrast(200%); opacity: 0.8; }
-            20% { transform: scale(0.9) translate(-5px, 15px) skew(-5deg); filter: invert(1) blur(1px); opacity: 0.9; }
-            25% { transform: scale(1.1) translate(0, 0) skew(20deg); filter: blur(5px); opacity: 0.5; }
-            35% { transform: scale(0.8) translateY(50px) skew(-20deg); opacity: 0; filter: blur(20px); }
-            100% { transform: scale(0.5) translateY(200px) skew(0deg); opacity: 0; filter: blur(40px); }
+        @keyframes sleek-fade-out {
+            0% { 
+                opacity: 1; 
+            }
+            100% { 
+                opacity: 0; 
+            }
         }
 
         /* File List Toggle Styles */
@@ -134,92 +129,192 @@
             display: none;
         }
 
-        /* Cosmic Nebula Environment */
-        .cosmic-nebula {
+        /* Sparse, Swirling Starfield Environment */
+        .starfield {
             position: fixed;
-            inset: 0;
-            background: 
-                radial-gradient(circle at 15% 25%, rgba(45, 10, 60, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 75%, rgba(10, 45, 60, 0.08) 0%, transparent 45%),
-                radial-gradient(circle at 50% 50%, rgba(20, 20, 20, 0.1) 0%, transparent 60%);
-            filter: blur(80px);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
             z-index: 0;
             pointer-events: none;
+            background-color: #000000;
+        }
+
+        .stars-1, .stars-2, .stars-3 {
+            position: absolute;
+            inset: 0;
+        }
+
+        .stars-1 {
+            background-image: 
+                radial-gradient(1.5px 1.5px at 150px 150px, white, transparent),
+                radial-gradient(1.5px 1.5px at 300px 400px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 400px 50px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 500px 250px, rgba(255,255,255,0.6), transparent);
+            background-size: 600px 600px;
+            opacity: 0.15;
+            animation: swirl 180s infinite linear;
+            transform-origin: center center;
+        }
+
+        .stars-2 {
+            background-image: 
+                radial-gradient(1px 1px at 50px 300px, white, transparent),
+                radial-gradient(1.5px 1.5px at 250px 450px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 600px 150px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1.5px 1.5px at 700px 600px, rgba(255,255,255,0.6), transparent);
+            background-size: 800px 800px;
+            opacity: 0.2;
+            animation: swirl-reverse 240s infinite linear;
+            transform-origin: 40% 60%;
+        }
+
+        .stars-3 {
+            background-image: 
+                radial-gradient(0.5px 0.5px at 100px 100px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 600px 700px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(0.5px 0.5px at 800px 200px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(0.5px 0.5px at 300px 850px, rgba(255,255,255,0.7), transparent);
+            background-size: 1000px 1000px;
+            opacity: 0.25; 
+            animation: float-swirl 200s infinite ease-in-out;
+            transform-origin: 60% 40%;
+        }
+
+        @keyframes swirl {
+            0% { transform: rotate(0deg) translate(0, 0); }
+            50% { transform: rotate(180deg) translate(30px, 30px); }
+            100% { transform: rotate(360deg) translate(0, 0); }
+        }
+
+        @keyframes swirl-reverse {
+            0% { transform: rotate(360deg) translate(0, 0); }
+            50% { transform: rotate(180deg) translate(-30px, -30px); }
+            100% { transform: rotate(0deg) translate(0, 0); }
+        }
+
+        @keyframes float-swirl {
+            0% { transform: rotate(0deg) translate(0, 0) scale(1); }
+            33% { transform: rotate(120deg) translate(40px, -20px) scale(1.05); }
+            66% { transform: rotate(240deg) translate(-20px, 40px) scale(0.95); }
+            100% { transform: rotate(360deg) translate(0, 0) scale(1); }
+        }
+
+        /* Cosmic Dust / Particle Swirlies */
+        .cosmic-dust {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(1px 1px at 200px 300px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(2px 2px at 400px 80px, rgba(150,200,255,0.3), transparent),
+                radial-gradient(1.5px 1.5px at 800px 600px, rgba(255,255,255,0.2), transparent),
+                radial-gradient(3px 3px at 500px 900px, rgba(200,150,255,0.15), transparent),
+                radial-gradient(1px 1px at 100px 800px, rgba(255,255,255,0.3), transparent);
+            background-size: 1200px 1200px;
+            opacity: 0.35;
+            filter: blur(1px);
+            animation: float-swirl 250s infinite ease-in-out reverse;
+            transform-origin: 30% 70%;
+        }
+
+        /* Distant Shooting Stars */
+        .meteor-shower {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .meteor {
+            position: absolute;
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.6), rgba(255,255,255,0));
+            opacity: 0;
+            transform: rotate(-45deg);
+            animation: meteor-fall infinite linear;
+        }
+
+        .meteor:nth-child(1) { top: 10%; left: 80%; animation-duration: 12s; animation-delay: 2s; }
+        .meteor:nth-child(2) { top: -10%; left: 50%; animation-duration: 15s; animation-delay: 7s; }
+        .meteor:nth-child(3) { top: 30%; left: 110%; animation-duration: 10s; animation-delay: 14s; }
+        .meteor:nth-child(4) { top: 60%; left: 90%; animation-duration: 18s; animation-delay: 22s; }
+        .meteor:nth-child(5) { top: 5%; left: 120%; animation-duration: 14s; animation-delay: 28s; }
+
+        @keyframes meteor-fall {
+            0% { transform: rotate(-45deg) translate(0, 0); opacity: 0; }
+            2% { opacity: 0.4; }
+            8% { transform: rotate(-45deg) translate(-800px, 0); opacity: 0; }
+            100% { transform: rotate(-45deg) translate(-800px, 0); opacity: 0; }
         }
 
         /* Sleek, Clean Fade In Sequence */
         #ui-container {
             opacity: 0;
-            transform: translateY(20px);
-            animation: sleek-fade-in 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation: sleek-fade-in 1.5s ease-in-out forwards;
         }
 
         @keyframes sleek-fade-in {
             0% {
                 opacity: 0;
-                transform: translateY(20px);
-                filter: blur(10px);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0);
-                filter: blur(0);
             }
         }
-
-        /* Initial Lightning Strike Load Sequence (REMOVED) */
-        /*
-        #ui-container {
-            opacity: 0;
-            animation: ui-crack-in 2s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
-        }
-
-        .lightning-strike-bg {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 9998;
-            background-color: transparent;
-            animation: flash-env 2s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
-        }
-
-        @keyframes ui-crack-in { ... }
-        @keyframes flash-env { ... }
-        */
     </style>
 </head>
 
 <body class="min-h-screen flex flex-col selection:bg-white selection:text-black relative bg-black overflow-x-hidden">
 
-    <!-- Subtle Cosmic Nebula Background -->
-    <div class="cosmic-nebula"></div>
+    <!-- Drifting Distant Stars Background -->
+    <div class="starfield">
+        <div class="stars-1"></div>
+        <div class="stars-2"></div>
+        <div class="stars-3"></div>
+        <div class="cosmic-dust"></div>
+    </div>
 
-    <!-- Initial Lightning Flash Overlay (REMOVED) -->
-    <!-- <div class="lightning-strike-bg"></div> -->
+    <!-- Distant Shooting Stars -->
+    <div class="meteor-shower">
+        <div class="meteor"></div>
+        <div class="meteor"></div>
+        <div class="meteor"></div>
+        <div class="meteor"></div>
+        <div class="meteor"></div>
+    </div>
 
-    <!-- System Shatter Overlay (Hidden by Default) -->
-    <div id="shatter-overlay" class="fixed inset-0 bg-black z-[9999] opacity-0 pointer-events-none flex items-center justify-center p-8 transition-opacity duration-1000">
-        <div id="shatter-quote" class="font-sans text-center text-gray-200 text-sm sm:text-base tracking-widest max-w-2xl opacity-0 transition-opacity duration-[2000ms] leading-relaxed drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"></div>
+    <!-- Sand Dissolve Overlay (Hidden by Default) -->
+    <div id="shatter-overlay" class="fixed inset-0 bg-black z-[9999] opacity-0 pointer-events-none flex items-center justify-center px-8 transition-opacity duration-[1500ms]">
+        <!-- Single Line Guarantee -->
+        <div id="shatter-quote" class="font-sans text-center text-gray-200 text-[10px] sm:text-sm tracking-widest w-full max-w-5xl whitespace-nowrap overflow-hidden text-ellipsis opacity-0 transition-opacity duration-[2500ms]"></div>
     </div>
 
     <!-- Main Content - Constrained Centered Stack -->
     <main id="ui-container" class="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 pt-48 sm:pt-64 pb-12 relative z-10 transition-all duration-700">
         
-        <!-- Global Header - Positioned above and left of the dates -->
-        <header class="flex flex-col gap-y-2 mb-16 ml-2 sm:ml-4 z-50">
-            <div class="flex flex-row items-baseline gap-3">
-                <button onclick="triggerSystemShatter()" class="font-sans font-bold tracking-[0.2em] text-base sm:text-lg text-white lightning-charge hover:text-gray-300 transition-colors duration-300 cursor-pointer outline-none" title="Trigger System Reboot">
+        <!-- Global Header -->
+        <header class="flex flex-col mb-16 ml-2 sm:ml-4 z-50">
+            <div class="flex flex-row items-center gap-3">
+                <button onclick="triggerSystemDissolve('quote')" class="font-sans font-bold tracking-[0.2em] text-base sm:text-lg text-white lightning-charge hover:text-gray-300 transition-colors duration-300 cursor-pointer outline-none leading-none" title="Read the Archives">
                     TerminAI
                 </button>
-                <button onclick="toggleAllFolders()" class="font-techno font-medium tracking-[0.3em] text-[10px] sm:text-xs text-[#666666] hover:text-gray-300 transition-colors duration-300 uppercase cursor-pointer outline-none" title="Toggle All Archives">
-                    // Archive
-                </button>
+                <div class="flex flex-row items-center gap-2 pt-0.5">
+                    <button onclick="triggerSystemDissolve('word')" class="font-techno font-medium tracking-[0.3em] text-[10px] sm:text-xs text-[#666666] hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(6,182,212,0.8)] transition-all duration-300 cursor-pointer outline-none leading-none" title="Word of the Day">
+                        //
+                    </button>
+                    <button onclick="toggleAllFolders()" class="font-techno font-medium tracking-[0.3em] text-[10px] sm:text-xs text-[#666666] hover:text-gray-300 transition-colors duration-300 uppercase cursor-pointer outline-none leading-none" title="Toggle All Archives">
+                        Archive
+                    </button>
+                </div>
             </div>
             
             <!-- BTC Copy Module -->
-            <button onclick="copyBTC(this)" class="group outline-none cursor-pointer flex items-center transition-all duration-300 mt-1" title="Copy BTC Address">
-                <span class="btc-text font-techno text-[11px] sm:text-xs text-[#333333] group-hover:text-gray-400 tracking-normal transition-colors duration-300">bc1qu3u5s986ph66ug4e39xr6ga9s89kv96799jz3d</span>
-                <svg class="w-3.5 h-3.5 ml-2 text-[#222222] group-hover:text-gray-400 transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button onclick="copyBTC(this)" class="group outline-none cursor-pointer flex items-center transition-all duration-300 mt-1.5" title="Copy BTC Address">
+                <span class="btc-text font-techno text-[11px] sm:text-xs text-[#333333] group-hover:text-gray-400 tracking-normal transition-colors duration-300 leading-none">bc1qu3u5s986ph66ug4e39xr6ga9s89kv96799jz3d</span>
+                <svg class="w-3 h-3 ml-2 text-[#222222] group-hover:text-gray-400 transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                 </svg>
@@ -369,6 +464,7 @@
 
     <!-- Interaction Script -->
     <script>
+        // Formatted with standard hyphens (no em dashes) to ensure clean single-line splitting
         const wisdomLibrary = [
             "The limits of my language mean the limits of my world. - Ludwig Wittgenstein",
             "We suffer more often in imagination than in reality. - Seneca",
@@ -422,9 +518,62 @@
             "Death is the sound of a closing door. - Unknown"
         ];
 
+        const wordsLibrary = [
+            "Aether - The pure, glowing fluid that fills the upper regions of space.",
+            "Anomaly - A deviation from the common rule, type, arrangement, or form.",
+            "Apophenia - The tendency to perceive meaningful connections between unrelated things.",
+            "Arcane - Known or understood by very few; mysterious; secret; obscure.",
+            "Cacophony - A harsh, discordant mixture of sounds.",
+            "Catharsis - The process of releasing, and thereby providing relief from, strong or repressed emotions.",
+            "Chimera - A thing that is hoped or wished for but in fact is illusory or impossible to achieve.",
+            "Cipher - A secret or disguised way of writing; a code.",
+            "Crepuscular - Of, resembling, or relating to twilight.",
+            "Defenestration - The action of throwing someone or something out of a window.",
+            "Enigma - A person or thing that is mysterious, puzzling, or difficult to understand.",
+            "Entropy - A thermodynamic quantity representing the unavailability of a system's thermal energy.",
+            "Ephemeral - Lasting for a very short time.",
+            "Epistemology - The theory of knowledge, especially with regard to its methods, validity, and scope.",
+            "Esoteric - Intended for or likely to be understood by only a small number of people.",
+            "Euphony - The quality of being pleasing to the ear, especially through a harmonious combination of words.",
+            "Evanescent - Soon passing out of sight, memory, or existence; quickly fading or disappearing.",
+            "Fugacious - Tending to disappear; fleeting.",
+            "Gossamer - A fine, filmy substance consisting of cobwebs spun by small spiders.",
+            "Halcyon - Denoting a period of time in the past that was idyllically happy and peaceful.",
+            "Hegemony - Leadership or dominance, especially by one country or social group over others.",
+            "Ineffable - Too great or extreme to be expressed or described in words.",
+            "Labyrinthine - Like a labyrinth; irregular and twisting.",
+            "Liminal - Occupying a position at, or on both sides of, a boundary or threshold.",
+            "Mellifluous - (Of a voice or words) sweet or musical; pleasant to hear.",
+            "Monolith - A large single upright block of stone, especially one shaped into or serving as a pillar or monument.",
+            "Myopia - Lack of imagination, foresight, or intellectual insight.",
+            "Nadir - The lowest point in the fortunes of a person or organization.",
+            "Nexus - A connection or series of connections linking two or more things.",
+            "Obfuscate - Render obscure, unclear, or unintelligible.",
+            "Obsidian - A hard, dark, glasslike volcanic rock formed by the rapid solidification of lava.",
+            "Ontology - The branch of metaphysics dealing with the nature of being.",
+            "Panopticon - A circular prison with cells arranged around a central well, from which prisoners could at all times be observed.",
+            "Paradigm - A typical example or pattern of something; a model.",
+            "Paradox - A seemingly absurd or self-contradictory statement or proposition.",
+            "Pareidolia - The tendency to perceive a specific, often meaningful image in a random or ambiguous visual pattern.",
+            "Petrichor - A pleasant smell that frequently accompanies the first rain after a long period of warm, dry weather.",
+            "Quixotic - Exceedingly idealistic; unrealistic and impractical.",
+            "Serendipity - The occurrence and development of events by chance in a happy or beneficial way.",
+            "Simulacrum - An image or representation of someone or something.",
+            "Singularity - The state, fact, quality, or condition of being singular.",
+            "Solipsism - The view or theory that the self is all that can be known to exist.",
+            "Somnambulist - A person who sleepwalks.",
+            "Susurrus - Whispering, murmuring, or rustling.",
+            "Sycophant - A person who acts obsequiously toward someone important in order to gain advantage.",
+            "Tenebrous - Dark, shadowy, or obscure.",
+            "Vestige - A trace of something that is disappearing or no longer exists.",
+            "Zenith - The time at which something is most powerful or successful.",
+            "Zephyr - A soft gentle breeze.",
+            "Ziggurat - A rectangular stepped tower, sometimes surmounted by a temple."
+        ];
+
         let isShattering = false;
 
-        function triggerSystemShatter() {
+        function triggerSystemDissolve(type) {
             if (isShattering) return;
             isShattering = true;
             
@@ -432,39 +581,54 @@
             const overlay = document.getElementById('shatter-overlay');
             const quoteEl = document.getElementById('shatter-quote');
             
-            // Format a random quote
-            const randomQuote = wisdomLibrary[Math.floor(Math.random() * wisdomLibrary.length)];
-            const formattedQuote = randomQuote.replace(" - ", "<br><span class='text-[#888888] font-techno text-xs mt-4 block'>- ") + "</span>";
-            quoteEl.innerHTML = formattedQuote;
+            let contentHTML = "";
 
-            // 1. Trigger the violent shatter animation on the UI container
-            body.classList.add('shatter-active');
+            if (type === 'quote') {
+                const randomQuote = wisdomLibrary[Math.floor(Math.random() * wisdomLibrary.length)];
+                const parts = randomQuote.split(" - ");
+                const textPart = parts[0];
+                const authorPart = parts[1] || "Unknown";
+                // Enforced single line rendering
+                contentHTML = `<span class="text-gray-200">${textPart}</span> <span class="text-[#888888] font-techno text-xs sm:text-sm ml-2">- ${authorPart}</span>`;
+            } else {
+                const randomWord = wordsLibrary[Math.floor(Math.random() * wordsLibrary.length)];
+                const parts = randomWord.split(" - ");
+                const wordPart = parts[0];
+                const defPart = parts[1] || "";
+                // Enforced single line rendering
+                contentHTML = `<span class="text-gray-200 font-techno uppercase tracking-[0.3em]">${wordPart}</span> <span class="text-gray-500 font-sans ml-3">// ${defPart}</span>`;
+            }
+
+            quoteEl.innerHTML = contentHTML;
+
+            // 1. Trigger the smooth fade out animation on the UI container
+            body.classList.add('system-fade-active');
             
-            // 2. Bring in the absolute black void to swallow the screen
+            // 2. Bring in the absolute black void slowly to swallow the screen
             setTimeout(() => {
                 overlay.classList.remove('opacity-0', 'pointer-events-none');
                 overlay.classList.add('opacity-100', 'pointer-events-auto');
-            }, 1000); 
+            }, 800); 
 
-            // 3. Fade in the random quote from the dark
+            // 3. Fade in the single-line text from the dark
             setTimeout(() => {
                 quoteEl.classList.remove('opacity-0');
                 quoteEl.classList.add('opacity-100');
-            }, 3000);
+            }, 2500);
 
-            // 4. Fade out the quote back to nothingness
+            // 4. Fade out the text back to nothingness
             setTimeout(() => {
                 quoteEl.classList.remove('opacity-100');
                 quoteEl.classList.add('opacity-0');
-            }, 8000); 
+            }, 7500); 
 
             // 5. System Reset: Remove overlay and restore UI to normal
             setTimeout(() => {
                 overlay.classList.remove('opacity-100', 'pointer-events-auto');
                 overlay.classList.add('opacity-0', 'pointer-events-none');
-                body.classList.remove('shatter-active');
+                body.classList.remove('system-fade-active');
                 isShattering = false;
-            }, 10000); 
+            }, 9500); 
         }
 
         function toggleFolder(folderId) {
@@ -476,14 +640,12 @@
             const folders = document.querySelectorAll('.folder-section');
             let anyOpen = false;
             
-            // Check if any folders are currently open
             folders.forEach(f => {
                 if (!f.classList.contains('is-collapsed')) {
                     anyOpen = true;
                 }
             });
 
-            // If any are open, close all. If all are closed, open all.
             folders.forEach(f => {
                 if (anyOpen) {
                     f.classList.add('is-collapsed');
@@ -497,7 +659,6 @@
             const btcAddress = "bc1qu3u5s986ph66ug4e39xr6ga9s89kv96799jz3d";
             const textElement = btn.querySelector('.btc-text');
             
-            // Fallback copy method to bypass iframe strictness in previews
             const textArea = document.createElement("textarea");
             textArea.value = btcAddress;
             document.body.appendChild(textArea);
@@ -505,12 +666,10 @@
             
             try {
                 document.execCommand('copy');
-                // Flash success text
                 textElement.innerText = "COPIED TO CLIPBOARD";
                 textElement.classList.remove('text-[#333333]', 'group-hover:text-gray-400');
                 textElement.classList.add('text-cyan-500', 'jester-glow', 'text-shadow-[0_0_8px_rgba(6,182,212,0.8)]');
                 
-                // Reset after 2 seconds
                 setTimeout(() => {
                     textElement.innerText = btcAddress;
                     textElement.classList.remove('text-cyan-500', 'jester-glow', 'text-shadow-[0_0_8px_rgba(6,182,212,0.8)]');
