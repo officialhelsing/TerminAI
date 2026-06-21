@@ -335,33 +335,29 @@
             100% { opacity: 1; }
         }
 
-        /* Rainbow Wave Effects */
-        .rainbow-wave-text {
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #00bfff, #8a2be2, #ff00ff, #ff0000);
+        /* Violet Wave Effects */
+        .violet-wave-text {
+            background: linear-gradient(90deg, #7b2cbf, #c77dff, #9d4edd, #e0aaff, #7b2cbf);
             background-size: 200% auto;
             color: transparent;
             -webkit-background-clip: text;
             background-clip: text;
-            animation: rainbow-wave 4s linear infinite;
+            animation: violet-wave 4s linear infinite;
         }
 
-        @keyframes rainbow-wave {
+        @keyframes violet-wave {
             0% { background-position: 0% center; }
             100% { background-position: -200% center; }
         }
 
-        .rainbow-wave-icon {
-            animation: rainbow-color 4s linear infinite;
+        .violet-wave-icon {
+            animation: violet-color 4s linear infinite;
         }
 
-        @keyframes rainbow-color {
-            0%, 100% { color: #ff0000; }
-            14% { color: #ff7f00; }
-            28% { color: #ffff00; }
-            42% { color: #00ff00; }
-            57% { color: #00bfff; }
-            71% { color: #8a2be2; }
-            85% { color: #ff00ff; }
+        @keyframes violet-color {
+            0%, 100% { color: #7b2cbf; }
+            33% { color: #c77dff; }
+            66% { color: #9d4edd; }
         }
     </style>
 </head>
@@ -431,7 +427,7 @@
                         
                         <div class="relative z-10">
                             <div class="flex items-center gap-3 mb-4">
-                                <div class="p-1.5 bg-gray-50 dark:bg-black rounded-md border border-gray-200 dark:border-[#1a1a1a] rainbow-wave-icon group-hover:border-indigo-500/40 transition-all duration-500">
+                                <div class="p-1.5 bg-gray-50 dark:bg-black rounded-md border border-gray-200 dark:border-[#1a1a1a] violet-wave-icon group-hover:border-indigo-500/40 transition-all duration-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                         <circle cx="18" cy="5" r="3"></circle>
                                         <circle cx="6" cy="12" r="3"></circle>
@@ -440,7 +436,7 @@
                                         <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
                                     </svg>
                                 </div>
-                                <span class="font-techno px-2 py-0.5 text-[8px] uppercase tracking-[0.2em] font-bold bg-gray-50 dark:bg-black rainbow-wave-text rounded border border-gray-200 dark:border-[#1a1a1a] group-hover:border-indigo-500/30 group-hover:shadow-[0_0_8px_rgba(99,102,241,0.25)] transition-all duration-300">[ INITIATIVE ]</span>
+                                <span class="font-techno px-2 py-0.5 text-[8px] uppercase tracking-[0.2em] font-bold bg-gray-50 dark:bg-black violet-wave-text rounded border border-gray-200 dark:border-[#1a1a1a] group-hover:border-indigo-500/30 group-hover:shadow-[0_0_8px_rgba(99,102,241,0.25)] transition-all duration-300">[ INITIATIVE ]</span>
                             </div>
                             
                             <h3 class="font-sans text-base font-semibold tracking-wide mb-3 text-gray-800 dark:text-gray-200 group-hover:text-indigo-500 group-hover:text-shadow-[0_0_15px_rgba(99,102,241,0.5)] jester-glow">Plenum Research</h3>
