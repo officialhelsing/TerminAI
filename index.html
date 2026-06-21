@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerminAI™ // Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- JetBrains for the Techno, Inter for the extreme clean readability -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        techno: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --glitch-base: #000000;
+            --glitch-glow: rgba(0, 0, 0, 0.2);
+            --glitch-high: rgba(0, 0, 0, 0.5);
+        }
+        
+        html.dark {
+            --glitch-base: #ffffff;
+            --glitch-glow: rgba(255, 255, 255, 0.2);
+            --glitch-high: rgba(255, 255, 255, 0.5);
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #111111;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        html.dark body {
+            background-color: #000000;
+            color: #e5e5e5;
+        }
+        
+        /* Mastered arcane transitions - Sleek and Clean */
+        .grimoire-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            background: #ffffff;
+        }
+        
+        html.dark .grimoire-card {
+            background: #000000;
+        }
+
+        .grimoire-card:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Cleaned up Text Effect */
+        .jester-glow {
+            transition: text-shadow 0.4s ease, color 0.4s ease;
+        }
+
+        /* Active Lightning Glitch Charge */
+        .lightning-charge {
+            color: var(--glitch-base);
+            display: inline-block;
+            position: relative;
+            animation: storm-flicker 5s infinite;
+        }
+
+        @keyframes storm-flicker {
+            0%, 9%, 11%, 19%, 21%, 54%, 56%, 100% {
+                text-shadow: 0 0 5px var(--glitch-glow);
+                transform: translate(0, 0) skewX(0);
+            }
+            10% {
+                text-shadow: 
+                    -1px 0 0 rgba(220, 38, 38, 0.6), 
+                    1px 0 0 rgba(6, 182, 212, 0.6),
+                    0 0 5px var(--glitch-high);
+                transform: translate(-0.5px, 0.5px) skewX(-5deg);
+            }
+            20% {
+                text-shadow: 
+                    1px 0 0 rgba(220, 38, 38, 0.6), 
+                    -1px 0 0 rgba(6, 182, 212, 0.6),
+                    0 0 5px rgba(255, 255, 255, 0.4);
+                transform: translate(0.5px, -0.5px) skewX(5deg);
+            }
+            55% {
+                text-shadow: 
+                    0 0 8px var(--glitch-high),
+                    0 0 15px rgba(6, 182, 212, 0.4);
+                transform: scale(1.005);
+            }
+        }
+
+        /* Specialized one-time shock for opening archives */
+        .glitch-shock {
+            animation: single-shock 0.8s ease-in-out forwards !important;
+        }
+
+        @keyframes single-shock {
+            0% { transform: translate(0, 0) skewX(0); color: inherit; }
+            10% { 
+                text-shadow: -1px 0 0 rgba(220, 38, 38, 0.8), 1px 0 0 rgba(6, 182, 212, 0.8), 0 0 5px var(--glitch-high); 
+                transform: translate(-1px, 1px) skewX(-8deg); 
+                color: var(--glitch-base); 
+            }
+            20% { 
+                text-shadow: 1px 0 0 rgba(220, 38, 38, 0.8), -1px 0 0 rgba(6, 182, 212, 0.8), 0 0 5px var(--glitch-high); 
+                transform: translate(1px, -1px) skewX(8deg); 
+                color: var(--glitch-base); 
+            }
+            30% { 
+                text-shadow: 0 0 10px var(--glitch-high), 0 0 20px rgba(6, 182, 212, 0.6); 
+                transform: scale(1.02); 
+                color: var(--glitch-base); 
+            }
+            100% { transform: translate(0, 0) skewX(0) scale(1); color: inherit; text-shadow: none; }
+        }
+
+        /* Secondary System Glitches */
+        .glitch-minor {
+            display: inline-block;
+            animation: storm-flicker 6s infinite;
+            animation-delay: 1.2s;
+        }
+
+        .glitch-micro {
+            display: inline-block;
+            animation: storm-flicker 8s infinite;
+            animation-delay: 3.5s;
+        }
+
+        /* Clean Fade Out Sequence */
+        .system-fade-active #ui-container {
+            animation: sleek-fade-out 2.5s ease-in-out forwards;
+        }
+
+        @keyframes sleek-fade-out {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* File List Toggle Styles */
+        .folder-toggle-icon {
+            display: inline-block;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: rotate(90deg); /* Open by default */
+            margin-right: 6px;
+        }
+        
+        .is-collapsed .folder-toggle-icon {
+            transform: rotate(0deg); /* Closed */
+        }
+
+        /* Smooth CSS Grid animation for opening folders */
+        .folder-content-wrapper {
+            display: grid;
+            grid-template-rows: 1fr;
+            transition: grid-template-rows 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            margin: -16px -16px;
+        }
+
+        .is-collapsed .folder-content-wrapper {
+            grid-template-rows: 0fr;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .folder-content {
+            overflow: hidden;
+            padding: 16px 16px;
+        }
+
+        /* Sparse, Swirling Starfield Environment */
+        .starfield {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            z-index: 0;
+            pointer-events: none;
+            background-color: #ffffff;
+            transition: background-color 0.5s ease;
+        }
+        
+        html.dark .starfield {
+            background-color: #000000;
+        }
+
+        .stars-1, .stars-2, .stars-3, .cosmic-dust, .meteor-shower {
+            position: absolute;
+            inset: 0;
+            filter: invert(1);
+            transition: filter 0.5s ease;
+        }
+        
+        html.dark .stars-1, html.dark .stars-2, html.dark .stars-3, html.dark .cosmic-dust, html.dark .meteor-shower {
+            filter: invert(0);
+        }
+
+        .stars-1 {
+            background-image: 
+                radial-gradient(1.5px 1.5px at 150px 150px, white, transparent),
+                radial-gradient(1.5px 1.5px at 300px 400px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 400px 50px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 500px 250px, rgba(255,255,255,0.6), transparent);
+            background-size: 600px 600px;
+            opacity: 0.15;
+            animation: swirl 180s infinite linear;
+            transform-origin: center center;
+        }
+
+        .stars-2 {
+            background-image: 
+                radial-gradient(1px 1px at 50px 300px, white, transparent),
+                radial-gradient(1.5px 1.5px at 250px 450px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 600px 150px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1.5px 1.5px at 700px 600px, rgba(255,255,255,0.6), transparent);
+            background-size: 800px 800px;
+            opacity: 0.2;
+            animation: swirl-reverse 240s infinite linear;
+            transform-origin: 40% 60%;
+        }
+
+        .stars-3 {
+            background-image: 
+                radial-gradient(0.5px 0.5px at 100px 100px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 600px 700px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(0.5px 0.5px at 800px 200px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(0.5px 0.5px at 300px 850px, rgba(255,255,255,0.7), transparent);
+            background-size: 1000px 1000px;
+            opacity: 0.25; 
+            animation: float-swirl 200s infinite ease-in-out;
+            transform-origin: 60% 40%;
+        }
+
+        @keyframes swirl {
+            0% { transform: rotate(0deg) translate(0, 0); }
+            50% { transform: rotate(180deg) translate(30px, 30px); }
+            100% { transform: rotate(360deg) translate(0, 0); }
+        }
+
+        @keyframes swirl-reverse {
+            0% { transform: rotate(360deg) translate(0, 0); }
+            50% { transform: rotate(180deg) translate(-30px, -30px); }
+            100% { transform: rotate(0deg) translate(0, 0); }
+        }
+
+        @keyframes float-swirl {
+            0% { transform: rotate(0deg) translate(0, 0) scale(1); }
+            33% { transform: rotate(120deg) translate(40px, -20px) scale(1.05); }
+            66% { transform: rotate(240deg) translate(-20px, 40px) scale(0.95); }
+            100% { transform: rotate(360deg) translate(0, 0) scale(1); }
+        }
+
+        /* Cosmic Dust / Particle Swirlies */
+        .cosmic-dust {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(1px 1px at 200px 300px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(2px 2px at 400px 80px, rgba(150,200,255,0.3), transparent),
+                radial-gradient(1.5px 1.5px at 800px 600px, rgba(255,255,255,0.2), transparent),
+                radial-gradient(3px 3px at 500px 900px, rgba(200,150,255,0.15), transparent),
+                radial-gradient(1px 1px at 100px 800px, rgba(255,255,255,0.3), transparent);
+            background-size: 1200px 1200px;
+            opacity: 0.35;
+            filter: blur(1px);
+            animation: float-swirl 250s infinite ease-in-out reverse;
+            transform-origin: 30% 70%;
+        }
+
+        /* Distant Shooting Stars */
+        .meteor-shower {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .meteor {
+            position: absolute;
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.6), rgba(255,255,255,0));
+            opacity: 0;
+            transform: rotate(-45deg);
+            animation: meteor-fall infinite linear;
+        }
+
+        .meteor:nth-child(1) { top: 10%; left: 80%; animation-duration: 12s; animation-delay: 2s; }
+        .meteor:nth-child(2) { top: -10%; left: 50%; animation-duration: 15s; animation-delay: 7s; }
+        .meteor:nth-child(3) { top: 30%; left: 110%; animation-duration: 10s; animation-delay: 14s; }
+        .meteor:nth-child(4) { top: 60%; left: 90%; animation-duration: 18s; animation-delay: 22s; }
+        .meteor:nth-child(5) { top: 5%; left: 120%; animation-duration: 14s; animation-delay: 28s; }
+
+        @keyframes meteor-fall {
+            0% { transform: rotate(-45deg) translate(0, 0); opacity: 0; }
+            2% { opacity: 0.4; }
+            8% { transform: rotate(-45deg) translate(-800px, 0); opacity: 0; }
+            100% { transform: rotate(-45deg) translate(-800px, 0); opacity: 0; }
+        }
+        
+        /* Shatter Overlay Background */
+        #shatter-overlay {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        html.dark #shatter-overlay {
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        /* Sleek, Clean Fade In Sequence */
+        #ui-container {
+            opacity: 0;
+            animation: sleek-fade-in 1.5s ease-in-out forwards;
+        }
+
+        @keyframes sleek-fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Rainbow Wave Effects */
+        .rainbow-wave-text {
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #00bfff, #8a2be2, #ff00ff, #ff0000);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: rainbow-wave 4s linear infinite;
+        }
+
+        @keyframes rainbow-wave {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+        }
+
+        .rainbow-wave-icon {
+            animation: rainbow-color 4s linear infinite;
+        }
+
+        @keyframes rainbow-color {
+            0%, 100% { color: #ff0000; }
+            14% { color: #ff7f00; }
+            28% { color: #ffff00; }
+            42% { color: #00ff00; }
+            57% { color: #00bfff; }
+            71% { color: #8a2be2; }
+            85% { color: #ff00ff; }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black relative bg-white dark:bg-black overflow-x-hidden transition-colors duration-500">
+
+    <!-- Drifting Distant Stars Background -->
+    <div class="starfield">
+        <div class="stars-1"></div>
+        <div class="stars-2"></div>
+        <div class="stars-3"></div>
+        <div class="cosmic-dust"></div>
+    </div>
+
+    <!-- Distant Shooting Stars -->
+    <div class="meteor-shower">
+        <div class="meteor"></div>
+        <div class="meteor"></div>
+        <div class="meteor"></div>
+        <div class="meteor"></div>
+        <div class="meteor"></div>
+    </div>
+
+    <!-- Sand Dissolve Overlay (Hidden by Default) -->
+    <div id="shatter-overlay" class="fixed inset-0 z-[9999] opacity-0 pointer-events-none flex items-center justify-center px-8 transition-opacity duration-[1500ms]">
+        <!-- Single Line Guarantee -->
+        <div id="shatter-quote" class="font-sans text-center text-gray-200 text-[10px] sm:text-sm tracking-widest w-full max-w-5xl whitespace-nowrap overflow-hidden text-ellipsis opacity-0 transition-opacity duration-[2500ms]"></div>
+    </div>
+
+    <!-- Main Content - Restored Horizontal Layout -->
+    <main id="ui-container" class="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 pt-48 sm:pt-64 pb-12 relative z-10 transition-all duration-700">
+        
+        <!-- Global Header -->
+        <header class="flex flex-row flex-wrap items-center gap-3 sm:gap-4 mb-16 ml-2 sm:ml-4 z-50">
+            <button onclick="triggerSystemDissolve('quote')" class="font-sans font-bold tracking-[0.2em] text-base sm:text-lg text-black dark:text-white lightning-charge hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300 cursor-pointer outline-none leading-none inline-block relative" title="Read the Archives">
+                TerminAI™
+            </button>
+            <button onclick="triggerSystemDissolve('word')" class="font-techno font-medium tracking-[0.3em] text-[10px] sm:text-xs text-gray-500 dark:text-[#666666] hover:text-cyan-600 dark:hover:text-cyan-400 hover:drop-shadow-[0_0_8px_rgba(6,182,212,0.8)] transition-all duration-300 cursor-pointer outline-none leading-none inline-block" title="Word of the Day">
+                //
+            </button>
+            <button onclick="toggleAllFolders()" class="font-techno font-medium tracking-[0.3em] text-[10px] sm:text-xs text-gray-500 dark:text-[#666666] hover:text-black dark:hover:text-gray-300 transition-colors duration-300 uppercase cursor-pointer outline-none leading-none inline-block" title="Toggle All Archives">
+                Dashboard
+            </button>
+            <button onclick="toggleTheme()" class="font-techno font-medium tracking-[0.3em] text-[10px] sm:text-xs text-gray-500 dark:text-[#666666] hover:text-cyan-500 dark:hover:text-gray-300 transition-colors duration-300 cursor-pointer outline-none leading-none inline-block flex items-center justify-center" title="Toggle System Mode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block dark:hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <button onclick="generateFact()" class="group outline-none cursor-pointer flex items-center transition-all duration-300 text-left flex-1 min-w-0 max-w-full" title="Generate Random Fact">
+                <span id="fact-display" class="font-techno text-[10px] sm:text-[11px] text-gray-500 dark:text-[#666666] group-hover:text-black dark:group-hover:text-gray-400 tracking-normal transition-colors duration-300 leading-tight truncate w-full block">Welcome to TerminAI, select an initiative.</span>
+            </button>
+        </header>
+
+        <!-- SECTION 01: JAN 01, 2026 -->
+        <section class="folder-section w-full mb-12 ml-6 sm:ml-12 is-collapsed" id="epoch-1">
+            <button class="w-fit pr-8 text-left pb-4 flex items-center cursor-pointer group outline-none" onclick="toggleFolder('epoch-1')">
+                <span class="font-techno text-[10px] sm:text-xs tracking-widest uppercase text-gray-500 dark:text-[#888888] group-hover:text-black dark:group-hover:text-gray-300 transition-colors duration-300">
+                    <span class="folder-toggle-icon">&gt;</span> JAN 01, 2026
+                </span>
+            </button>
+
+            <div class="folder-content-wrapper">
+                <div class="folder-content flex flex-col gap-6">
+                    
+                    <!-- Archive Item 1: Plenum Research -->
+                    <a href="https://officialhelsing.github.io/RyAI/" target="_blank" class="grimoire-card group border border-gray-200 dark:border-[#1a1a1a] rounded-xl p-5 relative overflow-hidden block w-full cursor-pointer hover:border-indigo-500/40 hover:shadow-[0_0_15px_rgba(99,102,241,0.15)]">
+                        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-indigo-500/5 blur-[80px] rounded-full pointer-events-none transition-opacity duration-700 opacity-0 group-hover:opacity-100"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="p-1.5 bg-gray-50 dark:bg-black rounded-md border border-gray-200 dark:border-[#1a1a1a] rainbow-wave-icon group-hover:border-indigo-500/40 transition-all duration-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="18" cy="5" r="3"></circle>
+                                        <circle cx="6" cy="12" r="3"></circle>
+                                        <circle cx="18" cy="19" r="3"></circle>
+                                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                    </svg>
+                                </div>
+                                <span class="font-techno px-2 py-0.5 text-[8px] uppercase tracking-[0.2em] font-bold bg-gray-50 dark:bg-black rainbow-wave-text rounded border border-gray-200 dark:border-[#1a1a1a] group-hover:border-indigo-500/30 group-hover:shadow-[0_0_8px_rgba(99,102,241,0.25)] transition-all duration-300">[ INITIATIVE ]</span>
+                            </div>
+                            
+                            <h3 class="font-sans text-base font-semibold tracking-wide mb-3 text-gray-800 dark:text-gray-200 group-hover:text-indigo-500 group-hover:text-shadow-[0_0_15px_rgba(99,102,241,0.5)] jester-glow">Plenum Research</h3>
+                            
+                            <p class="font-sans text-justify text-gray-500 dark:text-[#888888] text-[11px] leading-[1.8]">
+                                An artificial intelligence research initiative leveraging various Large Language Models to prompt engineer comprehensive academic papers. Key activities involved developing and fine-tune specialized models specifically designed for rigorous peer review environments. This work ensured generated content maintained high structural integrity and aligned with advanced analytical standards.
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interaction Script -->
+    <script>
+        const wisdomLibrary = [
+            "The limits of my language mean the limits of my world. - Ludwig Wittgenstein",
+            "We suffer more often in imagination than in reality. - Seneca",
+            "There is no truth. There is only perception. - Gustave Flaubert",
+            "The only true wisdom is in knowing you know nothing. - Socrates",
+            "Any sufficiently advanced technology is indistinguishable from magic. - Arthur C. Clarke",
+            "He who has a why to live for can bear almost any how. - Friedrich Nietzsche",
+            "To understand the universe, you must first understand the void. - Unknown Techno-Mage",
+            "We build our computers the way we build our cities: over time, without a plan. - Ellen Ullman",
+            "Life can only be understood backwards; but it must be lived forwards. - Søren Kierkegaard",
+            "The ghost in the machine is the echo of our own voice. - Arthur Koestler",
+            "Knowledge is a weapon. I intend to be formidably armed. - Terry Pratchett",
+            "Information is the resolution of uncertainty. - Claude Shannon",
+            "You are not a drop in the ocean. You are the entire ocean in a drop. - Rumi",
+            "The universe is under no obligation to make sense to you. - Neil deGrasse Tyson",
+            "Reality is that which, when you stop believing in it, doesn't go away. - Philip K. Dick",
+            "Man is condemned to be free. - Jean-Paul Sartre",
+            "Where is the wisdom we have lost in knowledge? Where is the knowledge we have lost in information? - T.S. Eliot",
+            "Do not go gentle into that good night. - Dylan Thomas",
+            "I must not fear. Fear is the mind-killer. - Frank Herbert",
+            "The computer is the most remarkable tool that we've ever come up with. It's the equivalent of a bicycle for our minds. - Steve Jobs"
+        ];
+
+        const wordsLibrary = [
+            "Aether - The pure, glowing fluid that fills the upper regions of space.",
+            "Anomaly - A deviation from the common rule, type, arrangement, or form.",
+            "Apophenia - The tendency to perceive meaningful connections between unrelated things.",
+            "Arcane - Known or understood by very few; mysterious; secret; obscure.",
+            "Cacophony - A harsh, discordant mixture of sounds.",
+            "Catharsis - The process of releasing, and thereby providing relief from, strong or repressed emotions.",
+            "Chimera - A thing that is hoped or wished for but in fact is illusory or impossible to achieve.",
+            "Cipher - A secret or disguised way of writing; a code.",
+            "Crepuscular - Of, resembling, or relating to twilight.",
+            "Enigma - A person or thing that is mysterious, puzzling, or difficult to understand."
+        ];
+
+        const factsLibrary = [
+            "Honey never spoils.",
+            "Octopuses have three hearts.",
+            "Venus is the only planet to spin clockwise.",
+            "Bananas are berries, but strawberries are not.",
+            "A day on Venus is longer than a year on Venus.",
+            "Water can boil and freeze at the same time.",
+            "The Eiffel Tower can be 15 cm taller during the summer.",
+            "The hashtag symbol is technically called an octothorpe.",
+            "A single cloud can weigh more than a million pounds.",
+            "Space smells like seared steak."
+        ];
+
+        let isShattering = false;
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        function generateFact() {
+            const factEl = document.getElementById('fact-display');
+            const randomFact = factsLibrary[Math.floor(Math.random() * factsLibrary.length)];
+            factEl.innerText = randomFact;
+        }
+
+        function triggerSystemDissolve(type) {
+            if (isShattering) return;
+            isShattering = true;
+            
+            const body = document.body;
+            const overlay = document.getElementById('shatter-overlay');
+            const quoteEl = document.getElementById('shatter-quote');
+            
+            let contentHTML = "";
+
+            if (type === 'quote') {
+                const randomQuote = wisdomLibrary[Math.floor(Math.random() * wisdomLibrary.length)];
+                const parts = randomQuote.split(" - ");
+                const textPart = parts[0];
+                const authorPart = parts[1] || "Unknown";
+                // Enforced single line rendering
+                contentHTML = `<span class="text-gray-900 dark:text-gray-200">${textPart}</span> <span class="text-gray-500 dark:text-[#888888] font-techno text-xs sm:text-sm ml-2">// ${authorPart}</span>`;
+            } else {
+                const randomWord = wordsLibrary[Math.floor(Math.random() * wordsLibrary.length)];
+                const parts = randomWord.split(" - ");
+                const wordPart = parts[0];
+                const defPart = parts[1] || "";
+                // Enforced single line rendering
+                contentHTML = `<span class="text-gray-900 dark:text-gray-200 font-techno uppercase tracking-[0.3em]">${wordPart}</span> <span class="text-gray-500 font-sans ml-3">// ${defPart}</span>`;
+            }
+
+            quoteEl.innerHTML = contentHTML;
+
+            // 1. Trigger the smooth fade out animation on the UI container
+            body.classList.add('system-fade-active');
+            
+            // 2. Bring in the absolute black void slowly to swallow the screen
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100', 'pointer-events-auto');
+            }, 800); 
+
+            // 3. Fade in the single-line text from the dark
+            setTimeout(() => {
+                quoteEl.classList.remove('opacity-0');
+                quoteEl.classList.add('opacity-100');
+            }, 2500);
+
+            // 4. Fade out the text back to nothingness
+            setTimeout(() => {
+                quoteEl.classList.remove('opacity-100');
+                quoteEl.classList.add('opacity-0');
+            }, 7500); 
+
+            // 5. System Reset: Remove overlay and restore UI to normal
+            setTimeout(() => {
+                overlay.classList.remove('opacity-100', 'pointer-events-auto');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                body.classList.remove('system-fade-active');
+                isShattering = false;
+            }, 9500); 
+        }
+
+        function toggleFolder(folderId) {
+            const folder = document.getElementById(folderId);
+            folder.classList.toggle('is-collapsed');
+        }
+
+        function toggleAllFolders() {
+            const folders = document.querySelectorAll('.folder-section');
+            let anyOpen = false;
+            
+            folders.forEach(f => {
+                if (!f.classList.contains('is-collapsed')) {
+                    anyOpen = true;
+                }
+            });
+
+            folders.forEach(f => {
+                if (anyOpen) {
+                    f.classList.add('is-collapsed');
+                } else {
+                    f.classList.remove('is-collapsed');
+                }
+            });
+        }
+
+        // Kinetic sequence: Automatically unpack the archive on load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Wait for the sleek-fade-in animation to complete (1.5 seconds)
+            setTimeout(() => {
+                const folders = document.querySelectorAll('.folder-section');
+                folders.forEach((folder, index) => {
+                    setTimeout(() => {
+                        // Locate the title span to inject the localized shock glitch
+                        const labelSpan = folder.querySelector('button > span');
+                        if(labelSpan) {
+                            labelSpan.classList.add('glitch-shock');
+                            // Clear the shock class after it resolves to prevent lingering states
+                            setTimeout(() => {
+                                labelSpan.classList.remove('glitch-shock');
+                            }, 800);
+                        }
+                        // Unseal the archive folder
+                        folder.classList.remove('is-collapsed');
+                    }, index * 400); // 400ms cascading stagger (restored speed)
+                });
+            }, 1500); 
+        });
+
+    </script>
+</body>
+</html>
